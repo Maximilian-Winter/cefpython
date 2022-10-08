@@ -220,8 +220,7 @@ SUBPROCESS_EXE = os.path.join(BUILD_SUBPROCESS,
 VS_PLATFORM_ARG = "x86" if ARCH32 else "amd64"
 
 # Python 3.5 / 3.6 / 3.7 / 3.8 / 3.9
-VS2015_VCVARS = ("C:\\Program Files (x86)\\Microsoft Visual Studio 14.0"
-                 "\\VC\\vcvarsall.bat")
+VS2015_VCVARS = ("C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Auxiliary\\Build\\vcvarsall.bat")
 
 # Required for building old CEF branches < 2704
 VS2013_VCVARS = ("C:\\Program Files (x86)\\Microsoft Visual Studio 12.0"
@@ -472,17 +471,17 @@ def get_msvs_for_python(vs_prefix=False):
     elif sys.version_info[:2] == (3, 4):
         return "VS2010" if vs_prefix else "2010"
     elif sys.version_info[:2] == (3, 5):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     elif sys.version_info[:2] == (3, 6):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     elif sys.version_info[:2] == (3, 7):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     elif sys.version_info[:2] == (3, 8):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     elif sys.version_info[:2] == (3, 9):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     elif sys.version_info[:2] == (3, 10):
-        return "VS2015" if vs_prefix else "2015"
+        return "VS2022" if vs_prefix else "2022"
     else:
         print("ERROR: This version of Python is not supported")
         sys.exit(1)

@@ -148,13 +148,13 @@ def get_winsdk_lib():
         if ARCH32:
             winsdk_libs = [
                 # Windows 7 SDKs.
-                r"C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Lib",
+                r"C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1A\\Lib",
                 r"C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0\\Lib",
             ]
         elif ARCH64:
             winsdk_libs = [
                 # Windows 7 SDKs.
-                r"C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Lib\\x64",
+                r"C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1A\\Lib\\x64",
                 r"C:\\Program Files\\Microsoft SDKs\\Windows\\v7.0\\Lib\\x64",
             ]
         else:
@@ -301,7 +301,8 @@ def get_include_dirs():
         SRC_DIR,
         os.path.join(SRC_DIR, "common"),
         os.path.join(SRC_DIR, "extern"),
-        os.path.join(SRC_DIR, "extern", "cef")
+        os.path.join(SRC_DIR, "extern", "cef"),
+        "C:\\Users\\maxim\\AppData\\Local\\Programs\\Python\\Python310\\include"
     ]
     if WINDOWS:
         include_dirs.extend([WINDOWS_DIR])

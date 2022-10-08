@@ -175,6 +175,9 @@ def build_subprocess_executable():
         lib_dir = os.path.join(CEF_BINARIES_LIBRARIES, "lib")
         lib_dir_vs = os.path.join(lib_dir,
                                   get_msvs_for_python(vs_prefix=True))
+    
+        print(lib_dir)
+        print(lib_dir_vs)
         compiler.link_executable(objects,
                                  output_progname="subprocess",
                                  output_dir=BUILD_SUBPROCESS,
@@ -276,7 +279,8 @@ def smart_compile(compiler, macros, extra_args, sources, output_dir):
                                       # TODO include dirs for Linux/Mac
                                       include_dirs=[SRC_DIR,
                                                     common_dir,
-                                                    get_python_include_path()],
+                                                    get_python_include_path(),
+                                                    "C:\\Users\\maxim\\AppData\\Local\\Programs\\Python\\Python310\\include"],
                                       # TODO compiler flags for Linux/Mac
                                       extra_preargs=None,
                                       extra_postargs=extra_args)

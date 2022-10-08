@@ -80,7 +80,7 @@ NO_AUTOMATE = False
 ALLOW_PARTIAL = False
 
 # Python versions
-SUPPORTED_PYTHON_VERSIONS = [(2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9)]
+SUPPORTED_PYTHON_VERSIONS = [(2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (3, 9), (3, 11)]
 
 # Python search paths. It will use first Python found for specific version.
 # Supports replacement of one environment variable in path eg.: %ENV_KEY%.
@@ -91,6 +91,7 @@ PYTHON_SEARCH_PATHS = dict(
         "%LOCALAPPDATA%\\Programs\\Python\\Python*\\",
         "C:\\Program Files\\Python*\\",
         "C:\\Program Files (x86)\\Python*\\",
+        "C:\\ZenDraft\\cefpython\\env\\Scripts\\python.exe",
     ],
     LINUX=[
         "%PYENV_ROOT%/versions/*/bin",
@@ -213,7 +214,7 @@ def clean_build_directories():
                              .format(cef_version=version["CEF_VERSION"],
                                      postfix2=postfix2)
             if len(glob.glob(cef_binary_dir)) != 1:
-                raise Exception("Directory not found: "+cef_binary_dir)
+                raise Exception("Directory not found: " + cef_binary_dir)
         # 64-bit
         postfix2 = get_cef_postfix2_for_arch("64bit")
         cef_binary_dir = "cef_binary_{cef_version}_windows64"\
@@ -252,7 +253,7 @@ def delete_cef_binaries_libraries_dir(arch):
 def search_for_pythons(search_arch):
     """Returns pythons ordered by version from lowest to highest."""
     pythons_found = list()
-    for pattern in PYTHON_SEARCH_PATHS[SYSTEM]:
+    for pattern in PYTHON_SEARCH_PATHS['WINDOWS']:
         # Replace env variable in path
         match = re.search(r"%(\w+)%", pattern)
         if match:
@@ -266,7 +267,7 @@ def search_for_pythons(search_arch):
         results = glob.glob(pattern)
         for path in results:
             if os.path.isdir(path):
-                python = os.path.join(path,
+                python = os.path.join("C:\\ZenDraft\\cefpython\\env\\Scripts\\",
                                       "python{ext}".format(ext=EXECUTABLE_EXT))
                 version_code = ("import sys;"
                                 "print(str(sys.version_info[:3]));")

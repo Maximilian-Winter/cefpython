@@ -80,8 +80,6 @@ def main():
         (CEF_BINARIES_LIBRARIES, "*.txt"), (PKG_DIR,),
         (CEF_BINARIES_LIBRARIES, "bin/*"), (PKG_DIR,),
         (CEFPYTHON_BINARY, "*"), (PKG_DIR,),
-        (EXAMPLES_DIR, "*"), (PKG_DIR, "examples/"),
-        (EXAMPLES_DIR, "*"), (SETUP_DIR, "examples/"),
     ]
     perform_copy_operations(copy_operations)
     delete_cef_sample_apps(caller_script=__file__, bin_dir=PKG_DIR)
